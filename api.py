@@ -32,6 +32,12 @@ app = Flask(__name__)
 API_SECRET  = os.environ["API_SECRET"]
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "")
 
+from flask import send_from_directory
+
+@app.route("/")
+def index():
+    return send_from_directory(".", "index.html")
+
 # ── In-memory store (swap for sqlite/postgres when you want persistence) ──────
 
 store = {
